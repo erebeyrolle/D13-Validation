@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS articles;
+
+CREATE TABLE IF NOT EXISTS articles (
+    id SERIAL NOT NULL,
+    author_id INT4 NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL  DEFAULT NOW(),
+    PRIMARY KEY (id),
+    CONSTRAINT fk_users FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE NO ACTION
+);
